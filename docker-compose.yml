@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456*
+      MYSQL_DATABASE: umbDB
+      MYSQL_USER: masterUMB
+      MYSQL_PASSWORD: 123456*
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: 123456*
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+volumes:
+  dbdata:
