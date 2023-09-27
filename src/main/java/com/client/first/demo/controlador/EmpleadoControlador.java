@@ -28,7 +28,7 @@ public class EmpleadoControlador {
 	// End-point para guardar empleado
 	@PostMapping("/empleados")
 	public Empleado saveEmpleado(@RequestBody Empleado empleado) {
-		System.out.println(empleado);
+		System.out.println("Nuevo Empleado:  " + empleado);
 		return repositorio.save(empleado);
 	}
 
